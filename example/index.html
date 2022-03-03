@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>ultra-soda</title>
+    <style type="text/css">
+        :root {
+            --primary-color: lightseagreen;
+            --darker-primary-color: cadetblue;
+        }
+
+        body {
+            font-family: 'Titillium Web', sans-serif;
+            font-size: 16px;
+        }
+
+        .field, .buttons, div.info {
+            position: relative;
+            margin-left: 25%;
+            margin-right: 25%;
+            padding: 25px;
+            width: auto;
+        }
+
+        .button {
+            border: none;
+            border-radius: 10px;
+            color: white;
+            padding: 10px 16px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+            outline: none;
+            background-color: var(--primary-color);
+        }
+
+        .button:hover {
+            background-color: var(--darker-primary-color);
+            color: white;
+        }
+
+        .field .drop-input-text{
+            width: 100px;
+            outline: none;
+            border:none;
+            border-bottom: 1px solid #777;
+            box-shadow: none !important;
+        }
+
+        .field .input-text{
+            width: 100%;
+            outline: none;
+            border:none;
+            border-bottom: 1px solid #777;
+            box-shadow: none !important;
+        }
+
+        .field .input-text:focus{
+            border-color: var(--primary-color);
+            border-width: medium medium 2px;
+        }
+
+        .field .drop-floating-label {
+            position: absolute;
+            top: 10px;
+            left: 27px;
+            font-size: 13px;
+            opacity: 0.5;
+        }
+
+        .field .floating-label {
+            position: absolute;
+            pointer-events: none;
+            top: 20px;
+            left: 27px;
+            opacity: 0.5;
+            transition: 0.2s ease all;
+        }
+
+        .field input:focus ~ .floating-label,
+        .field input:not(:focus):valid ~ .floating-label {
+            top: 10px;
+            left: 27px;
+            font-size: 13px;
+            opacity: 0.5;
+        }
+
+        .field input:focus ~.floating-label,
+        .field select:focus ~.drop-floating-label {
+            color: var(--primary-color);
+            opacity: 1.0;
+        }
+    </style>
+</head>
+<body>
+<div class='info'>
+    <h1>
+        RepeatMasker Annotations
+    </h1>
+</div>
+
+<form>
+    <div class="field">
+        <select id="chromosome" class="drop-input-text" required>
+            <option value="chr1">chr1</option>
+            <option value="chr2">chr2</option>
+            <option value="chr3">chr3</option>
+            <option value="chr4">chr4</option>
+            <option value="chr5">chr5</option>
+            <option value="chr6">chr6</option>
+            <option value="chr7">chr7</option>
+            <option value="chr8">chr8</option>
+            <option value="chr9">chr9</option>
+            <option value="chr10">chr10</option>
+            <option value="chr12">chr11</option>
+            <option value="chr13">chr12</option>
+            <option value="chr14">chr13</option>
+            <option value="chr15">chr14</option>
+            <option value="chr16">chr15</option>
+            <option value="chr17">chr16</option>
+            <option value="chr18">chr17</option>
+            <option value="chr19">chr18</option>
+            <option value="chr20">chr19</option>
+            <option value="chr21">chr20</option>
+            <option value="chr22">chr21</option>
+            <option value="chr23">chr22</option>
+            <option value="chrM">chrM</option>
+            <option value="chrX">chrX</option>
+        </select>
+        <span class="drop-floating-label">Chromosome</span>
+    </div>
+    <div class="field">
+        <input type="text" id="start" class="input-text" required/>
+        <span class="floating-label">Start</span>
+    </div>
+
+    <div class="field">
+        <input type="text" id="end" class="input-text" required/>
+        <span class="floating-label">End</span>
+    </div>
+
+    <div class="buttons">
+        <button id='submit-query' type="button" class="button button1">Submit</button>
+        <button id='reset' type="button" class="button button2">Reset</button>
+        <button id='example' type="button" class="button button2">Example</button>
+    </div>
+</form>
+<div id="charts" class="charts">
+    <div id="rmsk-chart" class="rmsk-chart"></div>
+</div>
+<script src="main.js"></script>
+</body>
+</html>

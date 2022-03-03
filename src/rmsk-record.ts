@@ -1,0 +1,16 @@
+export interface RmskRecord {
+  bin: number,
+  chrom: string,
+  chromStart: number,
+  chromEnd: number,
+  name: string,
+  score: number,
+  strand: string,
+  alignStart: number,
+  alignEnd: number,
+  reserved: string,
+  blockCount: number,
+  blockSizes: number[],
+  blockStarts: number[],
+  id: string,
+}
