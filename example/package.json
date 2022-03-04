@@ -10,12 +10,9 @@
   "license": "ISC",
   "dependencies": {
     "@sodaviz/rmsk-soda": "file:..",
-    "pug-cli": "^1.0.0-alpha6"
-  },
-  "devDependencies": {
+    "esbuild": "^0.14.25",
+    "pug-cli": "^1.0.0-alpha6",
     "source-map-loader": "^1.0.0",
-    "typescript": "^3.8.0",
-    "webpack": "^4.41.6",
-    "webpack-cli": "^3.3.11"
+    "typescript": "^3.8.0"
   }
 }
