@@ -1,53 +1,7 @@
+doctype html
 html
   head
-    title rmsk-soda
+    title polya-soda
     link(rel="stylesheet", href="https://sodaviz.org/media/styles.css")
   body
-    block header
-      h1 rmsk-soda
-      button.collapsible info
-      .example-text.content
-        p 
-          | The source code for this example can be found on 
-          a(href="https://github.com/sodaviz/rmsk-soda") GitHub
-          | .
-        p 
-          | RepeatMasker-SODA was developed to visualize transposable elements (TE) as annotated by 
-          a(href="https://www.repeatmasker.org/") RepeatMasker
-          | . The example application is largely a reimplementation of the UCSC Genome Browser 
-          a(href="https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chrX%3A15581309%2D15586945&hgsid=1073096573_yCC1YP3xvlq1aT9RTr4PBTsocket") RepeatMasker Viz track
-          |  with improved functionality.
-        p Each annotation is displayed with the following parameters: 
-        list
-          li TE annotations are represented as rectangles
-          li The outline color of the rectangles indicate the class of TE
-          li The chevron pattern inside the rectangles indicates the chromosome strand on which the feature was located
-          li The rectangles are internally shaded to indicate the inferred age of the feature, with lighter indicating older features
-          li When rectangles are joined by angled lines, it indicates that we infer that the represented TE annotations collectively represent one feature in the genome
-          li The horizontal dashed lines are projections of the portions of the TE sequence models that were not reported by RepeatMasker
-        br
-        p 
-          | For a more detailed description of these parameters, see the RepeatMasker Viz track 
-          a(href="https://genome.ucsc.edu/cgi-bin/hgTrackUi?db=hg38&g=joinedRmsk") settings page
-          | .
-
-    block content
-      .field
-        select#chromosome.drop-input-text
-          - let list = Array.from(Array(24).keys()).concat(["M", "X"]).slice(1)
-          each item in list
-            option(value="chr" + item)= "chr" + item
-        span.drop-floating-label Chromosome
-      .field
-        input(type="text", required)#start.input-text
-        span.floating-label Start
-      .field
-        input(type="text", required)#end.input-text
-        span.floating-label Start
-
-      .buttons
-        button#submit-query.button.button1 Submit
-        button#reset.button.button2 Reset
-        button#example.button.button2 Example
-      #charts
-      script(src="main.js")
+    include rmsk-soda.pug
