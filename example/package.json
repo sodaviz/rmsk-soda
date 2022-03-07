@@ -13,6 +13,7 @@
     "esbuild": "^0.14.25",
     "pug-cli": "^1.0.0-alpha6",
     "source-map-loader": "^1.0.0",
+    "spin.js": "^4.1.1",
     "typescript": "^3.8.0"
   }
 }

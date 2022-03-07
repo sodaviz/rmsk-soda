@@ -1,4 +1,11 @@
 import * as rmsk from '@sodaviz/rmsk-soda';
+import {Spinner} from "spin.js";
+
+let spinner = new Spinner({
+  color: "cadetblue",
+  position: "relative",
+  top: "100px",
+})
 
 let chart = new rmsk.RmskChart({
   selector: "#charts",
@@ -6,16 +13,21 @@ let chart = new rmsk.RmskChart({
   resizable: true,
   axisType: rmsk.internalSoda.AxisType.Bottom,
   rowHeight: 16,
+  postRender(): void {
+    this.defaultPostRender();
+    spinner.stop();
+  }
 })
 
 initButtons();
 checkUrl();
 
 function submitQuery() {
-  const chromosome = (<HTMLInputElement>document.getElementById('chromosome')).value;
-  const start = parseInt((<HTMLInputElement>document.getElementById('start')).value);
-  const end = parseInt((<HTMLInputElement>document.getElementById('end')).value);
+  let chromosome = (<HTMLInputElement>document.getElementById('chromosome')).value;
+  let start = parseInt((<HTMLInputElement>document.getElementById('start')).value);
+  let end = parseInt((<HTMLInputElement>document.getElementById('end')).value);
   setUrl(chromosome, `${start}`, `${end}`);
+  spinner.spin(document.getElementById("charts")!);
   chart.query({
     chromosome,
     start,
@@ -24,7 +36,7 @@ function submitQuery() {
 }
 
 function setUrl(chr: string, start: string, end: string): void {
-  const params = new URLSearchParams(location.search);
+  let params = new URLSearchParams(location.search);
   params.set('chromosome', chr);
   params.set('start', start);
   params.set('end', end);
@@ -32,8 +44,8 @@ function setUrl(chr: string, start: string, end: string): void {
 }
 
 function checkUrl(): void {
-  const queryString = window.location.search;
-  const urlParams = new URLSearchParams(queryString);
+  let queryString = window.location.search;
+  let urlParams = new URLSearchParams(queryString);
 
   let chrSet = false;
   let startSet = false;
@@ -91,21 +103,21 @@ for (let i = 0; i < collapsibleElements.length; i++) {
 }
 
 function initButtons(): void {
-  const submitButton = document.getElementById('submit-query')!;
+  let submitButton = document.getElementById('submit-query')!;
   if (submitButton !== undefined) {
     submitButton.addEventListener('click', submitQuery);
   } else {
     throw("Can't find submit button");
   }
 
-  const resetButton = document.getElementById('reset')!;
+  let resetButton = document.getElementById('reset')!;
   if (resetButton !== undefined) {
     resetButton.addEventListener('click', reset);
   } else {
     throw("Can't find reset button");
   }
 
-  const exampleButton = document.getElementById('example')!;
+  let exampleButton = document.getElementById('example')!;
   if (exampleButton !== undefined) {
     exampleButton.addEventListener('click', example);
   } else {
