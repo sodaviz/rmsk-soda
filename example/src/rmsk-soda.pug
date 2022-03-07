@@ -30,13 +30,13 @@ button.collapsible info
     - let list = Array.from(Array(24).keys()).concat(["M", "X"]).slice(1)
     each item in list
       option(value="chr" + item)= "chr" + item
-  span.drop-floating-label Chromosome
+  span.drop-floating-label chromosome
 .field
   input(type="text", required)#start.input-text
-  span.floating-label Start
+  span.floating-label start
 .field
   input(type="text", required)#end.input-text
-  span.floating-label Start
+  span.floating-label end
 
 .buttons
   button#submit-query.button.button1 Submit
