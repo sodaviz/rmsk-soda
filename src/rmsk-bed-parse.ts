@@ -1,6 +1,5 @@
 import * as soda from '@sodaviz/soda';
 import {
-  RmskAnnConfig,
   RmskAnnotation, RmskAnnotationGroup,
 } from "./rmsk-annotation";
 import {RmskRecord} from "./rmsk-record";
@@ -90,25 +89,24 @@ export function RmskBedParse(rmskObj: RmskRecord): RmskAnnotationGroup {
   }
 
   for (const [i, [w, x, type]] of repeatBlocks.entries()) {
-    let conf: RmskAnnConfig = {
+    ann.push({
       id: `${rmskObj.id}.${i}`,
       start: rmskObj.chromStart + x - 1,
-      width: w,
+      end: rmskObj.chromStart + x + w,
       type: type,
       className: className,
       familyName: familyName,
       subfamilyName: subfamilyName,
       score: rmskObj.score,
-      strand: rmskObj.strand,
-    }
-    ann.push(new RmskAnnotation(conf));
+      orientation: rmskObj.strand == "+" ? soda.Orientation.Forward : soda.Orientation.Reverse,
+    });
   }
 
   let groupConf: soda.AnnotationGroupConfig<RmskAnnotation> = {
     id: `group.${rmskObj.id}`,
     group: ann,
     start: rmskObj.chromStart,
-    width: rmskObj.chromEnd - rmskObj.chromStart,
+    end: rmskObj.chromEnd,
   }
 
   return new RmskAnnotationGroup(groupConf);

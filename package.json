@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "A soda visualization for RepeatMasker Transposable Element annotations.",
   "prepublish": "make build",
-  "main": "dist/main.js",
-  "types": "dist/main.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "files": [
     "dist/"
   ],
@@ -12,7 +12,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@sodaviz/soda": "^0.9.1",
+    "@sodaviz/soda": "^0.11.1",
     "d3": "5.15.0"
   },
   "devDependencies": {
