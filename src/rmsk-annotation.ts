@@ -22,9 +22,9 @@ export class RmskAnnotationGroup extends soda.AnnotationGroup<RmskAnnotation> {
 
   constructor(conf: soda.AnnotationGroupConfig<RmskAnnotation>) {
     super(conf)
-    this.alignedStart = this.group.filter((ann) => ann.type == 'aligned')
+    this.alignedStart = this.annotations.filter((ann) => ann.type == 'aligned')
       .reduce((prev, curr) => prev.start < curr.start ? prev : curr).start;
-    this.alignedEnd = this.group.filter((ann) => ann.type == 'aligned')
+    this.alignedEnd = this.annotations.filter((ann) => ann.type == 'aligned')
       .reduce((prev, curr) => prev.end > curr.end ? prev : curr).end;
     this.alignedWidth = this.alignedEnd - this.alignedStart;
   }

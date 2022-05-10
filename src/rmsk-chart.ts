@@ -33,7 +33,7 @@ export class RmskChart extends soda.Chart<RmskRenderParams> {
     this.updateLayout = function (this, params): void {
       let layout = soda.greedyGraphLayout(params.annotations, 0, alignedWidthSort);
       for (const group of params.annotations) {
-        for (const ann of group.group) {
+        for (const ann of group.annotations) {
           //@ts-ignore
           layout.rowMap.set(ann.id, layout.rowMap.get(group.id)!)
         }
@@ -46,7 +46,7 @@ export class RmskChart extends soda.Chart<RmskRenderParams> {
     this.draw = function (this, params): void {
       this.addAxis();
 
-      let allAnnotations = params.annotations.reduce<RmskAnnotation[]>((prev, curr) => prev.concat(curr.group), [])
+      let allAnnotations = params.annotations.reduce<RmskAnnotation[]>((prev, curr) => prev.concat(curr.annotations), [])
       let aligned = allAnnotations.filter((a) => a.type == 'aligned');
       let leftUnaligned = allAnnotations.filter((a) => a.type == 'left-unaligned');
       let rightUnaligned = allAnnotations.filter((a) => a.type == 'right-unaligned');

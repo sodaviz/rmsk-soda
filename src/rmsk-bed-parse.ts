@@ -104,7 +104,7 @@ export function RmskBedParse(rmskObj: RmskRecord): RmskAnnotationGroup {
 
   let groupConf: soda.AnnotationGroupConfig<RmskAnnotation> = {
     id: `group.${rmskObj.id}`,
-    group: ann,
+    annotations: ann,
     start: rmskObj.chromStart,
     end: rmskObj.chromEnd,
   }
