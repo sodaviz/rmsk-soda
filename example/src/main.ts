@@ -11,7 +11,6 @@ let chart = new rmsk.RmskChart({
   selector: "#charts",
   zoomable: true,
   resizable: true,
-  axisType: rmsk.internalSoda.AxisType.Bottom,
   rowHeight: 16,
   postRender(): void {
     this.defaultPostRender();
