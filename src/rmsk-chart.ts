@@ -34,11 +34,9 @@ export class RmskChart extends soda.Chart<RmskRenderParams> {
       let layout = soda.greedyGraphLayout(params.annotations, 0, alignedWidthSort);
       for (const group of params.annotations) {
         for (const ann of group.annotations) {
-          //@ts-ignore
           layout.rowMap.set(ann.id, layout.rowMap.get(group.id)!)
         }
       }
-      //@ts-ignore
       layout.rowCount++;
       this.layout = layout;
     }
